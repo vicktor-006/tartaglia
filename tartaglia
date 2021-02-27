@@ -1,0 +1,43 @@
+#bin/Bash
+clear
+figlet TRIANGOLO DI TARTAGLIA
+echo "INSERISCI IL NUMERO DOVE LA RIGA DEVE ARRIVARE"
+echo " $1"
+sleep 1
+echo "$2"
+echo -n "$1"
+sleep 0.1
+clear
+sleep 0
+echo 'Caricamento..'
+sleep 1
+count=0
+total=34
+pstr="[=======================================================================]"
+
+while [ $count -lt $total ]; do
+  sleep 0.1 # this is work
+  count=$(( $count + 1 ))
+  pd=$(( $count * 73 / $total ))
+  printf "\r%3d.%1d%% %.${pd}s" $(( $count * 100 / $total )) $(( ($count * 1000 / $total) % 10 )) $pstr
+done
+
+clear
+figlet TRIANGOLO DI TARTAGLIA
+echo '1'
+n=1
+until [ $n -ge $2 ]; do
+      n=$((n+1))
+      x=1
+      echo -n  "$x "
+      k=1
+      until [ $k -ge $n ]; do
+            y=$(echo "$x*($n-$k)/$k" | bc)
+            k=$((k+1))
+            echo -n "$y "
+            x=$y
+            done
+echo ""
+done
+exit 0
+
